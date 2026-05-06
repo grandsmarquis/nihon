@@ -54,23 +54,7 @@ export function ConversationBrowser({
   return (
     <section className="space-y-8" aria-label="Conversation browser">
       <div className="ukiyo-panel rounded-md p-4">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <label className="w-full space-y-2 lg:max-w-xs">
-            <span className="text-sm font-medium text-stone-800">JLPT level</span>
-            <select
-              value={level}
-              onChange={(event) => setLevel(event.target.value as LevelFilter)}
-              className="ukiyo-field h-11 w-full rounded-md px-3 text-base outline-none transition"
-            >
-              <option value="All">All levels</option>
-              {jlptLevels.map((jlptLevel) => (
-                <option key={jlptLevel} value={jlptLevel}>
-                  {jlptLevel}
-                </option>
-              ))}
-            </select>
-          </label>
-
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <label className="flex min-h-11 items-center gap-3 rounded-md border-2 border-stone-950 bg-white px-3 text-sm font-medium text-stone-800 lg:mb-0">
             <input
               type="checkbox"
