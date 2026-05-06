@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Nihon Grammar",
-    template: "%s | Nihon Grammar",
+    default: "infinihongo",
+    template: "%s | infinihongo",
   },
   description: "A markdown-powered Japanese grammar reference for learners.",
 };

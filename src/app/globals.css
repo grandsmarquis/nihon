@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fbfaf6;
+  --background: #f8f8f5;
   --foreground: #111111;
-  --paper: #fffefa;
+  --paper: #ffffff;
   --ink: #111111;
   --ink-soft: #3a3a34;
   --ink-muted: #6d6a60;
-  --wash: #f0eee5;
+  --wash: #eeeeea;
   --line: #111111;
 }
 
@@ -33,12 +33,10 @@ select {
 .ukiyo-page {
   background-color: var(--background);
   background-image:
-    radial-gradient(circle at 100% 0, transparent 0 3.2rem, rgba(17, 17, 17, 0.055) 3.25rem 3.35rem, transparent 3.4rem),
-    radial-gradient(circle at 100% 0, transparent 0 4.7rem, rgba(17, 17, 17, 0.05) 4.75rem 4.86rem, transparent 4.91rem),
     linear-gradient(rgba(17, 17, 17, 0.028) 1px, transparent 1px),
     linear-gradient(90deg, rgba(17, 17, 17, 0.02) 1px, transparent 1px);
-  background-position: right top, right top, 0 0, 0 0;
-  background-size: 10rem 10rem, 10rem 10rem, 2rem 2rem, 2rem 2rem;
+  background-position: 0 0, 0 0;
+  background-size: 2rem 2rem, 2rem 2rem;
   color: var(--ink);
 }
 

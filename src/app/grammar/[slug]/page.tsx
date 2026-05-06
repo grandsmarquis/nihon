@@ -44,28 +44,28 @@ export default async function GrammarPointPage({ params }: GrammarPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-stone-50 text-stone-950">
-      <article className="mx-auto max-w-4xl px-5 py-8 md:px-8 md:py-12">
-        <header className="border-b border-stone-200 pb-8">
+    <main className="ukiyo-page min-h-screen">
+      <article className="ukiyo-shell mx-auto max-w-4xl px-5 py-8 md:px-8 md:py-12">
+        <header className="ukiyo-header border-b pb-8">
           <div className="flex flex-wrap items-center gap-3 text-sm">
-            <Link href="/grammar" className="font-semibold text-red-800 underline-offset-4 hover:underline">
+            <Link href="/grammar" className="ukiyo-link font-semibold underline-offset-4 hover:underline">
               Grammar index
             </Link>
-            <span className="text-stone-400">/</span>
-            <span className="font-medium text-stone-600">{grammarPoint.level}</span>
+            <span className="text-stone-500">/</span>
+            <span className="font-medium text-stone-700">{grammarPoint.level}</span>
           </div>
 
-          <h1 className="mt-6 text-5xl font-semibold tracking-normal text-stone-950">{grammarPoint.title}</h1>
-          <p className="mt-4 text-xl leading-8 text-stone-600">{grammarPoint.summary}</p>
+          <h1 className="ukiyo-title mt-6 text-5xl tracking-normal">{grammarPoint.title}</h1>
+          <p className="mt-4 text-xl leading-8 text-stone-700">{grammarPoint.summary}</p>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            <span className="rounded-md bg-red-800 px-2.5 py-1 text-sm font-semibold text-white">
+            <span className="ukiyo-seal rounded-sm px-2.5 py-1 text-sm font-semibold">
               {grammarPoint.level}
             </span>
             {grammarPoint.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-stone-200 bg-white px-2.5 py-1 text-sm font-medium text-stone-700"
+                className="ukiyo-tag rounded-sm px-2.5 py-1 text-sm font-medium"
               >
                 {tag}
               </span>
@@ -73,21 +73,21 @@ export default async function GrammarPointPage({ params }: GrammarPageProps) {
           </div>
         </header>
 
-        <section className="mt-8 rounded-lg border border-stone-200 bg-white p-5 md:p-7">
-          <h2 className="text-2xl font-semibold text-stone-950">Examples</h2>
+        <section className="ukiyo-panel mt-8 rounded-md p-5 md:p-7">
+          <h2 className="ukiyo-section-title text-2xl">Examples</h2>
           <div className="mt-5 space-y-4">
             {grammarPoint.examples.map((example) => (
-              <div key={`${example.japanese}-${example.english}`} className="border-l-2 border-red-800 pl-4">
+              <div key={`${example.japanese}-${example.english}`} className="ukiyo-quote border-l-2 pl-4">
                 <p className="text-2xl font-semibold leading-9 text-stone-950">{example.japanese}</p>
-                <p className="mt-1 text-sm text-stone-500">{example.reading}</p>
-                <p className="mt-2 text-base leading-7 text-stone-700">{example.english}</p>
-                {example.note && <p className="mt-2 text-sm text-stone-500">{example.note}</p>}
+                <p className="mt-1 text-sm text-stone-600">{example.reading}</p>
+                <p className="mt-2 text-base leading-7 text-stone-800">{example.english}</p>
+                {example.note && <p className="mt-2 text-sm text-stone-600">{example.note}</p>}
               </div>
             ))}
           </div>
         </section>
 
-        <section className="lesson-content mt-8 rounded-lg border border-stone-200 bg-white p-5 md:p-7">
+        <section className="lesson-content ukiyo-panel mt-8 rounded-md p-5 md:p-7">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{grammarPoint.content}</ReactMarkdown>
         </section>
       </article>

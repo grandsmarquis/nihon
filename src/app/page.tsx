@@ -18,7 +18,7 @@ export default function Home() {
         <header className="ukiyo-header mb-8 flex flex-col gap-5 border-b pb-8 md:flex-row md:items-end md:justify-between">
           <div>
             <Link href="/" className="ukiyo-brand text-sm font-semibold">
-              Nihon Grammar
+              infinihongo
             </Link>
             <h1 className="ukiyo-title mt-5 text-4xl tracking-normal md:text-5xl">
               Conversation examples
