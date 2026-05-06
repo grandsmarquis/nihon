@@ -30,7 +30,19 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <footer className="mt-auto border-t-2 border-foreground bg-background px-5 py-5 text-center text-sm text-stone-700">
+          <a
+            href="https://infiniwa.com"
+            className="ukiyo-link font-semibold"
+            rel="noreferrer"
+            target="_blank"
+          >
+            made by infiniwa.com
+          </a>
+        </footer>
+      </body>
     </html>
   );
 }

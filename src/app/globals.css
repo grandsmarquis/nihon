@@ -101,6 +101,12 @@ select {
   box-shadow: 7px 7px 0 var(--ink);
 }
 
+.ukiyo-card-learnt {
+  background:
+    linear-gradient(135deg, rgba(17, 17, 17, 0.06), transparent 38%),
+    #deded8;
+}
+
 .ukiyo-field {
   border: 2px solid var(--ink);
   background-color: var(--paper);
@@ -141,6 +147,12 @@ select {
   border: 2px solid var(--ink);
   background: var(--ink);
   color: var(--paper);
+}
+
+.ukiyo-done {
+  border: 1px solid rgba(17, 17, 17, 0.5);
+  background: #efefea;
+  color: var(--ink-soft);
 }
 
 .ukiyo-image-frame {
