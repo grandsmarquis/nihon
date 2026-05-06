@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nihon Grammar
 
-## Getting Started
+A Next.js App Router site for browsing Japanese grammar points stored as markdown.
 
-First, run the development server:
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Grammar Content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Add grammar files to `content/grammar/*.md`. Each file needs YAML frontmatter plus a markdown body:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```md
+---
+title: "〜たい"
+slug: "tai-form"
+level: "N5"
+tags:
+  - desire
+  - verb-form
+order: 30
+summary: "Expresses wanting to do an action by attaching たい to the verb stem."
+examples:
+  - japanese: "日本に行きたいです。"
+    reading: "にほんに いきたいです。"
+    english: "I want to go to Japan."
+---
 
-## Learn More
+## Meaning
 
-To learn more about Next.js, take a look at the following resources:
+Markdown explanation goes here.
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Metadata is validated during development and builds. Invalid frontmatter throws an error that includes the file path and the failed field.
