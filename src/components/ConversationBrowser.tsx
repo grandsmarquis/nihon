@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLearntConversations } from "@/components/useLearntConversations";
 import type { ConversationSummary } from "@/lib/conversations";
 import { jlptLevels, type JLPTLevel } from "@/lib/grammar-types";
@@ -13,6 +13,65 @@ type ConversationBrowserProps = {
   conversations: ConversationSummary[];
   grammarTitles?: Record<string, string>;
 };
+
+type ConversationCardImageProps = {
+  image: NonNullable<ConversationSummary["image"]>;
+};
+
+function ConversationCardImage({ image }: ConversationCardImageProps) {
+  const frameRef = useRef<HTMLDivElement | null>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    if (shouldLoad) {
+      return;
+    }
+
+    const frame = frameRef.current;
+
+    if (!frame) {
+      return;
+    }
+
+    if (typeof IntersectionObserver === "undefined") {
+      const frameRequest = requestAnimationFrame(() => setShouldLoad(true));
+      return () => cancelAnimationFrame(frameRequest);
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setShouldLoad(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "600px 0px" },
+    );
+
+    observer.observe(frame);
+
+    return () => observer.disconnect();
+  }, [shouldLoad]);
+
+  return (
+    <div ref={frameRef} className="ukiyo-image-frame mb-5 overflow-hidden rounded-sm">
+      {shouldLoad ? (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={1672}
+          height={941}
+          loading="lazy"
+          decoding="async"
+          sizes="(min-width: 768px) 50vw, 100vw"
+          className="ukiyo-image aspect-[16/9] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+        />
+      ) : (
+        <div aria-hidden="true" className="aspect-[16/9] w-full bg-stone-100" />
+      )}
+    </div>
+  );
+}
 
 export function ConversationBrowser({
   conversations,
@@ -127,16 +186,7 @@ export function ConversationBrowser({
                 }`}
               >
                 {conversation.image && (
-                  <div className="ukiyo-image-frame mb-5 overflow-hidden rounded-sm">
-                    <Image
-                      src={conversation.image.src}
-                      alt={conversation.image.alt}
-                      width={1672}
-                      height={941}
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="ukiyo-image aspect-[16/9] w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                    />
-                  </div>
+                  <ConversationCardImage image={conversation.image} />
                 )}
                 <div className="flex items-start justify-between gap-3">
                   <div>

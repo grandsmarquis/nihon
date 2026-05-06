@@ -110,7 +110,15 @@ export const getConversations = cache((): Conversation[] => {
     .readdirSync(conversationsDirectory)
     .filter((fileName) => fileName.endsWith(".md"))
     .map(parseConversationFile)
-    .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+    .sort((a, b) => {
+      const levelDifference = jlptLevels.indexOf(a.level) - jlptLevels.indexOf(b.level);
+
+      if (levelDifference !== 0) {
+        return levelDifference;
+      }
+
+      return a.order - b.order || a.title.localeCompare(b.title);
+    });
 });
 
 export const getConversationSummaries = cache((): ConversationSummary[] =>
